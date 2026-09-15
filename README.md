@@ -117,7 +117,7 @@ funnel, decisiones, procesos. Nunca los datos personales de sus clientes finales
 ├── CLAUDE.md              ← reglas globales y tablas de ruteo
 ├── .claude/               ← ÚNICA capa de IA: 7 agentes, 7 comandos, 3 skills
 ├── .mcp.example.json      ← plantilla de servidores MCP, sin credenciales
-├── _global/bitacora/    ← bitácora de lo que no es de ninguna empresa
+├── _global/Decisiones/    ← bitácora de lo que no es de ninguna empresa
 ├── _Templates/            ← empresa, área, proyecto
 ├── empresa1/              ← EJEMPLO: SaaS B2B, 6 áreas
 └── empresa2/              ← EJEMPLO: consultora, 5 áreas

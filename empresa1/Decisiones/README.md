@@ -10,7 +10,7 @@ Una decisión que afecta a **varias** empresas se escribe aquí **y** en la bit�
 con la misma línea marcada `[cross]`.
 
 Una decisión que no pertenece a **ninguna** empresa — alta o baja de una, foco del portafolio, una regla del
-framework — no va aquí: va a `_global/bitacora/`. La prueba: *si mañana cierras esta empresa, ¿la decisión sigue
+framework — no va aquí: va a `_global/Decisiones/`. La prueba: *si mañana cierras esta empresa, ¿la decisión sigue
 teniendo sentido?* Si sí, era global.
 
 Formato:

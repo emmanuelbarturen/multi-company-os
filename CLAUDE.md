@@ -133,7 +133,7 @@ Aplica a todo: documentos, diagramas, prompts, salidas de MCPs y cualquier cosa 
 │   └── settings.json
 ├── .mcp.example.json      ← plantilla de servidores MCP, sin credenciales
 ├── _global/               ← ámbito global: lo que no es de ninguna empresa
-│   └── bitacora/          ← se llama distinto a propósito: no es la de una empresa
+│   └── Decisiones/        ← bitácora de lo que no pertenece a ninguna
 ├── _Templates/            ← plantillas: empresa, área, proyecto
 │   ├── empresa/           ← lo que copia /mos:empresa-nueva
 │   ├── area-context.md
@@ -226,7 +226,7 @@ forma legible para humanos, con fecha, una línea o bloque por evento, en el arc
 |---|---|---|
 | A **una** empresa | `<empresa>/Decisiones/` | subir un precio, cambiar un proceso, cerrar un proyecto |
 | A **varias, pero no todas** | La misma línea marcada `[cross]` en la bitácora de cada empresa afectada | mover un proyecto entre empresas, compartir un proveedor |
-| A **ninguna** — es del portafolio | `_global/bitacora/` | alta o baja de una empresa, dónde poner el foco, cambiar una regla del framework |
+| A **ninguna** — es del portafolio | `_global/Decisiones/` | alta o baja de una empresa, dónde poner el foco, cambiar una regla del framework |
 
 **La prueba para distinguir global de cross:** *si mañana cierras una de las empresas involucradas, ¿la decisión
 sigue teniendo sentido?* Si sí, es global. Si se cae con ella, pertenecía a esa empresa.

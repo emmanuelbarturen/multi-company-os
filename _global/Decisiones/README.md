@@ -1,6 +1,6 @@
 <!-- Creado: 2026-09-15 · Actualizado: 2026-09-15 · Creador: Oxalc -->
 
-# Bitácora global
+# Decisiones globales
 
 Bitácora de las decisiones que **no pertenecen a ninguna empresa**. Un evento por línea, con fecha, en el archivo
 del quarter actual: `Q<N>-<AAAA>.log` (Q1 ene-mar, Q2 abr-jun, Q3 jul-sep, Q4 oct-dic).
@@ -29,8 +29,8 @@ necesitan verla al leer su propia bitácora. Global es lo que sigue siendo verda
 ## Qué NO vive aquí
 
 `_global/` **no es una empresa**: no tiene `context.md`, no tiene áreas, no tiene `_GTD/`, y no aparece nunca como
-opción al resolver en qué empresa se trabaja. Su bitácora se llama `bitacora/`, no `Decisiones/`, precisamente para
-que no se confunda con la de una empresa. Es un ámbito, al lado de las empresas, no por encima de ellas.
+opción al resolver en qué empresa se trabaja. Su carpeta `Decisiones/` se llama igual que la de una empresa porque
+hace lo mismo: guardar decisiones. Lo que cambia es de quién son — aquí, de nadie en particular. Es un ámbito, al lado de las empresas, no por encima de ellas.
 
 El trabajo nunca vive aquí. Un trabajo que toca varias empresas tiene una empresa dueña y su carpeta vive en
 `<empresa-dueña>/_GTD/` — aquí solo queda el registro de la decisión, si la hubo.
