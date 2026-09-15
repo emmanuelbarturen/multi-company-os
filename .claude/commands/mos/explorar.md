@@ -21,8 +21,8 @@ find . -mindepth 2 -maxdepth 2 -name 'context.md' -not -path './_Templates/*' -n
 **Nunca elijas tú.** Resuelta la empresa, lee su `context.md` — ficha, áreas declaradas y reglas propias.
 
 Si el tema cruza varias empresas, dilo explícitamente y trátalo como exploración cross-empresa: las conclusiones,
-si se guardan, van a la bitácora de **cada empresa afectada**, con la misma línea marcada `[cross]`. No hay bitácora
-fuera de una empresa.
+si se guardan, van a la bitácora de **cada empresa afectada**, con la misma línea marcada `[cross]`. Si la conclusión
+no pertenece a ninguna empresa en particular — es del portafolio — va a `_global/bitacora/`.
 
 ## 1. Clasificar el trabajo
 

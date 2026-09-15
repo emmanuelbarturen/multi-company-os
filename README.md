@@ -40,7 +40,7 @@ congela al arrancar, así que no cargan hasta que vuelvas a abrir.
 
 ## Qué trae
 
-**6 comandos** — uno de arranque y cinco para el ciclo de vida de todo trabajo.
+**7 comandos** — uno de arranque, cinco para el ciclo de vida de todo trabajo, y uno para mejorar la forma de trabajar.
 
 | Comando | Para qué |
 |---|---|
@@ -50,8 +50,9 @@ congela al arrancar, así que no cargan hasta que vuelvas a abrir.
 | `/mos:proponer` | Entrevista en vivo → propuesta, solución y plan de tareas |
 | `/mos:aplicar` | **Ejecuta** el plan de tareas y marca progreso verificado |
 | `/mos:archivar` | Cierra el trabajo, lo mueve a `Archived/` y registra el hito |
+| `/mos:framework-builder` | Cuando algo del día a día cuesta de más: ordenar, simplificar, buscar herramienta |
 
-**6 agentes** — tres para llevar un trabajo de idea a tareas, tres como consejo directivo.
+**7 agentes** — tres para llevar un trabajo de idea a tareas, tres como consejo directivo, y uno que cuida la forma de trabajar.
 
 | Agente | Para qué |
 |---|---|
@@ -61,6 +62,7 @@ congela al arrancar, así que no cargan hasta que vuelvas a abrir.
 | `head-ceo` | Juicio estratégico bajo incertidumbre |
 | `head-cfo` | Pricing, márgenes, economía unitaria, caja |
 | `head-marketing` | Posicionamiento: contra qué compites y para quién |
+| `framework-builder` | Asesor de productividad con IA: propone lo más simple, en palabras sencillas, y puede reorganizar el repo |
 
 **3 skills** — `diagrama-flujo` (Mermaid embebido), `wireframes` (baja fidelidad primero), `publicar-doc`
 (publica a la herramienta que uses, o no publica y no falla).
@@ -97,8 +99,11 @@ conversación. Si nada de eso aplica, el asistente **pregunta**. Nunca asume.
 
 **Aislamiento entre empresas.** El contexto de una empresa no entra en los documentos de otra. Si un aprendizaje sirve
 a varias, se abstrae hasta perder el dato y sube a `_Templates/`. Es el riesgo que solo aparece al pasar de una a
-varias, y la fuga es silenciosa. **Todo vive dentro de una empresa** — incluida su bitácora de decisiones: no hay
-carpetas de contenido en la raíz.
+varias, y la fuga es silenciosa. El trabajo **siempre** vive dentro de una empresa, y su bitácora también.
+
+La única excepción es `_global/`, que no es una empresa sino un ámbito a su lado: ahí van las decisiones que no
+pertenecen a ninguna — dar de alta o de baja una empresa, decidir dónde poner el foco del portafolio. La prueba es
+*si mañana cierras una empresa, ¿la decisión sigue teniendo sentido?*
 
 **Invariante #0 — plano de control, nunca plano de datos.** Aquí vive cómo opera la empresa: ingresos, conteos,
 funnel, decisiones, procesos. Nunca los datos personales de sus clientes finales. Solo agregados y derivadas.
@@ -110,8 +115,9 @@ funnel, decisiones, procesos. Nunca los datos personales de sus clientes finales
 ```
 .
 ├── CLAUDE.md              ← reglas globales y tablas de ruteo
-├── .claude/               ← ÚNICA capa de IA: 6 agentes, 6 comandos, 3 skills
+├── .claude/               ← ÚNICA capa de IA: 7 agentes, 7 comandos, 3 skills
 ├── .mcp.example.json      ← plantilla de servidores MCP, sin credenciales
+├── _global/bitacora/    ← bitácora de lo que no es de ninguna empresa
 ├── _Templates/            ← empresa, área, proyecto
 ├── empresa1/              ← EJEMPLO: SaaS B2B, 6 áreas
 └── empresa2/              ← EJEMPLO: consultora, 5 áreas
@@ -124,9 +130,19 @@ Y dentro de cada empresa: su `context.md`, una carpeta por área declarada, `_GT
 
 ## Cómo crece
 
-Agregar un agente o una skill es: crear el archivo en `.claude/`, registrar su fila en la tabla correspondiente de
-`CLAUDE.md`, y mencionarlo aquí. **Un comando va en `.claude/commands/mos/`** para que herede el prefijo `/mos:`.
-La capa es única y compartida: lo que agregues sirve para todas tus empresas.
+Agregar una skill es: crear el archivo en `.claude/skills/`, registrar su fila en la tabla de `CLAUDE.md`, y
+mencionarlo aquí. **Un comando va en `.claude/commands/mos/`** para que herede el prefijo `/mos:`.
+
+**Un agente pide un paso más: su ámbito.** Antes de escribirlo hay que decidir a quién sirve — a todas tus empresas
+(`global`), a una sola, o a un área concreta de una — y eso determina cómo se llama el archivo y qué lleva escrito
+dentro. Los seis que vienen son globales: su conocimiento es un método, no un negocio. Un agente que conozca los
+clientes o las convenciones de **una** empresa sería falso en las otras, y por eso se marca.
+
+Es un default traicionero: un agente nace global por comodidad y a los dos meses tiene dentro las cifras de una
+empresa y el tono de otra. La regla completa está en `CLAUDE.md` → *Crear un agente*.
+
+La capa `.claude/` es única y compartida: **todos los agentes cargan siempre**, así que el ámbito no lo impone el
+sistema de archivos — lo impone lo que el agente tiene escrito y la tabla de ruteo.
 
 El repo funciona **en local, sin git**. Si prefieres versionarlo, `.gitignore` ya está listo; si no, nada lo exige.
 

@@ -71,7 +71,11 @@ detente**. Nunca tomes la primera carpeta de la lista ni la última empresa usad
 
 **Trabajo que cruza empresas** (comparar dos, mover algo de una a otra, una decisión que afecta a varias): se nombra
 explícitamente como cross-empresa y se registra en la bitácora de **cada empresa afectada**, con la misma línea
-marcada `[cross]`. **No existe bitácora fuera de una empresa:** toda decisión pertenece a alguien.
+marcada `[cross]`.
+
+**`_global/` no es una empresa.** No tiene `context.md`, ni áreas, ni `_GTD/`, y **nunca se ofrece como opción al
+resolver en qué empresa se trabaja**. Es un ámbito al lado de las empresas, no por encima: aloja la bitácora de lo
+que no pertenece a ninguna.
 
 ---
 
@@ -123,11 +127,13 @@ Aplica a todo: documentos, diagramas, prompts, salidas de MCPs y cualquier cosa 
 ├── CLAUDE.md              ← este archivo: reglas globales y tablas de ruteo
 ├── README.md              ← qué es el framework y cómo arrancar
 ├── .claude/               ← ÚNICA capa de IA, compartida por todas las empresas
-│   ├── agents/            ← 6 agentes
-│   ├── commands/mos/      ← 6 comandos (la subcarpeta ES el namespace /mos:)
+│   ├── agents/            ← 7 agentes
+│   ├── commands/mos/      ← 7 comandos (la subcarpeta ES el namespace /mos:)
 │   ├── skills/            ← 3 skills
 │   └── settings.json
 ├── .mcp.example.json      ← plantilla de servidores MCP, sin credenciales
+├── _global/               ← ámbito global: lo que no es de ninguna empresa
+│   └── bitacora/          ← se llama distinto a propósito: no es la de una empresa
 ├── _Templates/            ← plantillas: empresa, área, proyecto
 │   ├── empresa/           ← lo que copia /mos:empresa-nueva
 │   ├── area-context.md
@@ -212,16 +218,24 @@ Al crear, escríbelos; al editar, actualiza la fecha de actualización.
 en la raíz, que es donde el harness de plan-mode escribe y no se puede redirigir. Cuando un plan se aprueba y se
 empieza a implementar, escribe arriba la **fecha de ejecución**; si va en varias tandas, registra cada una.
 
-**Bitácora de decisiones — siempre dentro de una empresa.** Toda **decisión importante, cambio de definición o
-hito** se registra de forma legible para humanos, con fecha, una línea o bloque por evento, en
-`<empresa>/Decisiones/Q<N>-<AAAA>.log`.
+**Bitácora de decisiones — tres niveles.** Toda **decisión importante, cambio de definición o hito** se registra de
+forma legible para humanos, con fecha, una línea o bloque por evento, en el archivo del quarter
+(`Q<N>-<AAAA>.log`). Dónde, depende de a quién pertenece:
 
-**No hay bitácora en la raíz.** Una decisión que afecta a varias empresas se escribe en la de **cada una**, con la
-misma línea marcada `[cross]`. Duplicar una línea es más barato que perder el registro — y quien lee la bitácora de
-una empresa ve todo lo que la afecta, sin tener que saber que existe otro archivo en otro lado.
+| A quién pertenece | Dónde va | Ejemplos |
+|---|---|---|
+| A **una** empresa | `<empresa>/Decisiones/` | subir un precio, cambiar un proceso, cerrar un proyecto |
+| A **varias, pero no todas** | La misma línea marcada `[cross]` en la bitácora de cada empresa afectada | mover un proyecto entre empresas, compartir un proveedor |
+| A **ninguna** — es del portafolio | `_global/bitacora/` | alta o baja de una empresa, dónde poner el foco, cambiar una regla del framework |
 
-Los cambios del **framework** no van a ninguna bitácora de empresa: si tocan plantillas, van a
-`_Templates/CHANGELOG.md`; si tocan doctrina, se editan directamente en este archivo.
+**La prueba para distinguir global de cross:** *si mañana cierras una de las empresas involucradas, ¿la decisión
+sigue teniendo sentido?* Si sí, es global. Si se cae con ella, pertenecía a esa empresa.
+
+Una decisión que afecta a dos de tus cinco empresas **no es global**: es de esas dos, y son ellas las que necesitan
+verla al leer su propia bitácora. Duplicar una línea es más barato que un registro partido en dos sitios.
+
+Los cambios del **framework** que tocan plantillas van además a `_Templates/CHANGELOG.md`, porque ahí se lee qué
+migrar; si tocan doctrina, se editan directamente en este archivo.
 
 No entra aquí el trabajo rutinario ni el detalle de implementación: solo lo que cambia el rumbo o la definición.
 El quarter se determina por la fecha actual (Q1 ene-mar, Q2 abr-jun, Q3 jul-sep, Q4 oct-dic).
@@ -261,21 +275,69 @@ colisionar.
 | Crear o modificar un trabajo (tarea suelta o proyecto) hasta su plan de tareas | `/mos:proponer` |
 | Ejecutar el plan de tareas y publicar lo que corresponda | `/mos:aplicar` |
 | Cerrar un trabajo terminado (a `Archived/` + registro en `Decisiones/`) | `/mos:archivar` |
+| Algo del trabajo diario cuesta más de lo que debería: ordenar, simplificar, buscar una herramienta | `/mos:framework-builder` |
 
 Los cuatro comandos del ciclo **resuelven la empresa antes de escribir nada**. `/mos:setup` se corre **una vez**,
 al adoptar el framework; después, cada empresa entra por `/mos:empresa-nueva`.
 
 ### Situación → Agente
 
-| Situación / disparador | Agente |
-|---|---|
-| Levantar requerimientos, definir el alcance de algo nuevo, traducir una idea de negocio a especificación | `project-requirements` |
-| Cerrar el cómo técnico: stack, servicios, infraestructura, decisiones de arquitectura, qué es spike y qué no | `project-tech-lead` |
-| Descomponer un plan en tareas atómicas para quien las va a ejecutar | `project-manager` |
-| Decidir bajo incertidumbre, juicio estratégico, evaluar una apuesta contraria, trabajar la estrategia de la empresa | `head-ceo` |
-| Pricing, márgenes, unit economics, runway, control de costos, decisiones de financiamiento | `head-cfo` |
-| Posicionamiento, contra qué competimos, elegir segmento o categoría, el funnel no cierra aunque nos conozcan | `head-marketing` |
-| _(cada instalación agrega sus filas)_ | — |
+| Situación / disparador | Agente | Ámbito |
+|---|---|---|
+| Levantar requerimientos, definir el alcance de algo nuevo, traducir una idea de negocio a especificación | `project-requirements` | global |
+| Cerrar el cómo técnico: stack, servicios, infraestructura, decisiones de arquitectura, qué es spike y qué no | `project-tech-lead` | global |
+| Descomponer un plan en tareas atómicas para quien las va a ejecutar | `project-manager` | global |
+| Decidir bajo incertidumbre, juicio estratégico, evaluar una apuesta contraria, trabajar la estrategia de la empresa | `head-ceo` | global |
+| Pricing, márgenes, unit economics, runway, control de costos, decisiones de financiamiento | `head-cfo` | global |
+| Posicionamiento, contra qué competimos, elegir segmento o categoría, el funnel no cierra aunque nos conozcan | `head-marketing` | global |
+| Cómo organizar mejor el trabajo, simplificar lo que cuesta, reorganizar el repo, qué herramienta usar | `framework-builder` | global |
+| _(cada instalación agrega sus filas)_ | — | — |
+
+**La columna Ámbito es obligatoria.** Dice a quién sirve cada agente: `global`, `<empresa>`, o `<empresa>/<área>`.
+Un agente sin ámbito declarado en esta tabla es un agente que nadie sabe cuándo invocar.
+
+### Crear un agente — pregunta SIEMPRE su ámbito
+
+**Antes de escribir una sola línea de un agente nuevo, pregunta a quién va a servir.** `AskUserQuestion`,
+header "Ámbito", tres opciones:
+
+| Ámbito | Cuándo | Nombre del archivo |
+|---|---|---|
+| **Global** | Sirve a todas las empresas. Su conocimiento es un método, no un negocio: finanzas, posicionamiento, requerimientos | `<rol>.md` |
+| **De una empresa** | Conoce el negocio, los clientes o las convenciones de UNA empresa y sería falso en otra | `<empresa>--<rol>.md` |
+| **De un área** | Vive dentro de un área concreta de una empresa: su catálogo, sus procesos, sus reglas | `<empresa>--<área>--<rol>.md` |
+
+**Nunca lo asumas.** Un agente nace global por descuido — es el default cómodo — y a los dos meses tiene dentro las
+cifras de una empresa, el tono de otra y sirve mal a las dos. La pregunta cuesta un turno; desmontar un agente
+contaminado cuesta una tarde y la confianza en lo que produjo.
+
+**Si la respuesta es "no sé todavía"**, es señal de que el agente no está definido: pregunta para qué se va a usar
+la primera vez, y deriva el ámbito de ahí.
+
+**Tres cosas al crearlo, o no existe del todo:**
+
+1. El archivo en `.claude/agents/` con el nombre que le toca por su ámbito.
+2. Una línea `ambito: <global | empresa | empresa/área>` declarada **dentro** del agente, en su propia sección.
+   Es lo que el agente lee de sí mismo cuando arranca.
+3. Su fila en la tabla `Situación → Agente`, con la columna Ámbito llena.
+
+**Un agente acotado se niega fuera de su ámbito.** Escríbeselo: si lo invocan para otra empresa u otra área, lo dice
+y redirige al que corresponda, en vez de improvisar sobre un negocio que no conoce. La capa `.claude/` es única y
+compartida — **todos los agentes cargan siempre en la sesión**, así que el ámbito no lo impone el sistema de
+archivos: lo impone lo que el agente tiene escrito y esta tabla.
+
+> **Por qué el ámbito va en el nombre del archivo y no en carpetas.** Claude Code documenta la carga de agentes desde
+> `.claude/agents/*.md` y `~/.claude/agents/*.md` — **el primer nivel**. Las subcarpetas dentro de `.claude/agents/`
+> no están documentadas, ni tampoco un `.claude/agents/` anidado en un subdirectorio del proyecto. Ordenar los
+> agentes en carpetas es exactamente el tipo de cambio que parece inocuo y los hace desaparecer sin un solo error.
+> Deja los `.md` planos y que el prefijo haga el trabajo.
+>
+> (Las **skills** sí cargan desde subdirectorios anidados y reciben namespace por directorio. Son distintas: no
+> extrapoles de unas a otras.)
+>
+> El frontmatter oficial de un agente admite, entre otros: `name`, `description`, `tools`, `disallowedTools`,
+> `model`, `skills`, `memory`, `maxTurns`, `mcpServers`, `hooks`. **No hay ningún campo nativo de ámbito**
+> (`scope`, `paths`, `when` no existen) — por eso el ámbito es doctrina escrita, no configuración.
 
 ### Situación → Skill
 

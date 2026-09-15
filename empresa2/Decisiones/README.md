@@ -7,7 +7,11 @@ Una decisión importante, cambio de definición o hito por línea, con fecha, en
 
 No entra el trabajo rutinario ni el detalle de implementación: solo lo que cambia el rumbo o la definición.
 Una decisión que afecta a **varias** empresas se escribe aquí **y** en la bitácora de cada una de las otras,
-con la misma línea marcada `[cross]`. No hay bitácora fuera de una empresa.
+con la misma línea marcada `[cross]`.
+
+Una decisión que no pertenece a **ninguna** empresa — alta o baja de una, foco del portafolio, una regla del
+framework — no va aquí: va a `_global/bitacora/`. La prueba: *si mañana cierras esta empresa, ¿la decisión sigue
+teniendo sentido?* Si sí, era global.
 
 Formato:
 

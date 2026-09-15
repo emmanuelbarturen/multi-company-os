@@ -60,7 +60,8 @@ Por cada empresa confirmada:
 3. Rellena `{slug}/context.md`: la ficha del paso 2 y la tabla de áreas recortada a lo declarado.
 4. Estampa los campos de control: `Id` = `{slug}`, `estado: activa`, y `template_version:` = la versión que
    encabeza `_Templates/CHANGELOG.md`.
-5. Escribe la primera línea de su bitácora en `{slug}/Decisiones/Q<N>-<AAAA>.log`.
+5. Registra el alta en `_global/bitacora/Q<N>-<AAAA>.log` — el alta es un evento del portafolio, no de la
+   empresa. La bitácora de la empresa arranca vacía a propósito.
 6. Fecha de hoy en todas las cabeceras `<!-- Creado: … -->`.
 
 ## 4. Limpiar los ejemplos

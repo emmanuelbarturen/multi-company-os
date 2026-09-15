@@ -69,7 +69,7 @@ del CLAUDE.md raíz — datos personales de clientes finales.>
 
 **`estado:`** — `activa` (default), `pausada` o `archivada`. La resolución de empresa **solo ofrece las activas**.
 Para dar de baja una empresa no borres nada: cambia este campo a `pausada` o `archivada` y registra el hito en
-su propia bitácora `Decisiones/`. El árbol se conserva; deja de aparecer en los paneles.
+`_global/bitacora/`, porque la baja es un evento del portafolio. El árbol se conserva; deja de aparecer en los paneles.
 
 **`template_version:`** — la versión de `_Templates/empresa/` con la que se creó esta empresa. Cuando la plantilla
 evoluciona, esta empresa **no cambia sola**: `_Templates/CHANGELOG.md` dice qué cambió entre versiones y qué aplicar

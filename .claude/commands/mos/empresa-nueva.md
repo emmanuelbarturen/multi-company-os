@@ -58,20 +58,21 @@ Siempre se pueden agregar después — preguntando de nuevo.
 
 ## 5. Registrar el hito
 
-Añade la **primera línea** de la bitácora de la empresa recién creada, en
-`{slug}/Decisiones/Q<N>-<AAAA>.log` (Q1 ene-mar, Q2 abr-jun, Q3 jul-sep, Q4 oct-dic):
+El alta de una empresa **no pertenece a esa empresa: pertenece al portafolio.** Va a la bitácora global, en
+`_global/bitacora/Q<N>-<AAAA>.log` (Q1 ene-mar, Q2 abr-jun, Q3 jul-sep, Q4 oct-dic):
 
 ```
 AAAA-MM-DD — Alta de la empresa <nombre> (<slug>). Áreas: <lista>.
 ```
 
-No hay bitácora en la raíz: toda decisión pertenece a una empresa, y el alta pertenece a la que nace.
+La bitácora de la empresa nueva **arranca vacía**, y eso está bien: su primera línea la escribe su primera decisión
+real, no el trámite de haberla creado.
 
 ## 6. Dar de baja una empresa (la contraparte)
 
 No hay comando de baja porque **no se borra nada**. Una empresa que se pausa, se vende o se cierra cambia el campo
-`estado:` de su `context.md` a `pausada` o `archivada`, y el hito se registra en **su propia** bitácora. Deja de
-ofrecerse en la resolución de empresa; su árbol se conserva intacto.
+`estado:` de su `context.md` a `pausada` o `archivada`, y el hito se registra en `_global/bitacora/` — como el
+alta, la baja es un evento del portafolio. Deja de ofrecerse en la resolución de empresa; su árbol se conserva intacto.
 
 Si el usuario pide dar de baja una empresa durante esta sesión, hazlo así y no muevas ni borres carpetas.
 
