@@ -40,7 +40,7 @@ retoma un proyecto existente por su nombre, o es la lectura trivial de un archiv
 Con varias empresas en el mismo repo, **saber en cuál estás es un paso explícito, nunca una suposición**. El orden de
 resolución es este, y el primero que dé resultado gana:
 
-1. **El usuario la nombra** en su mensaje ("en la cafetería…", "para el estudio…").
+1. **El usuario la nombra** en su mensaje ("en la cafetería…", "para el estudio…" — el nombre que use, no el slug).
 2. **El path lo determina:** el archivo o carpeta en juego está bajo `<empresa>/`.
 3. **La sesión ya la fijó:** una empresa resuelta antes en esta misma conversación sigue vigente hasta que el usuario la
    cambie.
@@ -134,13 +134,14 @@ Aplica a todo: documentos, diagramas, prompts, salidas de MCPs y cualquier cosa 
 ├── .mcp.example.json      ← plantilla de servidores MCP, sin credenciales
 ├── _global/               ← ámbito global: lo que no es de ninguna empresa
 │   └── Decisiones/        ← bitácora de lo que no pertenece a ninguna
-├── _Templates/            ← plantillas: empresa, área, proyecto
-│   ├── empresa/           ← lo que copia /mos:empresa-nueva
-│   ├── area-context.md
-│   └── proyecto/
-├── tienda-de-cafe/        ← EJEMPLO didáctico — bórralo
-└── estudio-web/           ← EJEMPLO didáctico — bórralo
+└── _Templates/            ← plantillas: empresa, área, proyecto
+    ├── empresa/           ← lo que copia /mos:empresa-nueva
+    ├── area-context.md
+    └── proyecto/
 ```
+
+**Todavía no hay ninguna empresa, y así debe ser:** `main` es el punto de partida limpio. `/mos:setup` crea la
+primera, como una carpeta más en la raíz, al lado de `_global/` y `_Templates/`.
 
 Y dentro de cada empresa:
 
@@ -378,10 +379,12 @@ de datos al contexto del modelo — solo agregados y derivadas.
 
 ## Notas
 
-- **Este repo es una plantilla.** `tienda-de-cafe/` y `estudio-web/` son ejemplos didácticos: dos áreas cada una,
-  **sin un solo nombre en común**, para mostrar que las áreas son libres. Traen además trabajo de ejemplo —un
-  proyecto en curso, uno archivado y tareas sueltas— para que se vea el ciclo completo sin tener que correrlo.
-  Bórralos cuando ya no te enseñen nada y crea los tuyos con `/mos:setup`.
+- **`main` viene sin empresas, a propósito.** Es el punto de partida limpio: creas las tuyas con `/mos:setup` y
+  no tienes que borrar nada de nadie.
+- **Si quieres ver el framework en uso, mira la rama `ejemplo-de-uso`.** Ahí hay dos empresas de rubros distintos
+  con dos áreas cada una —sin un solo nombre en común— y trabajo de mentira dentro: un proyecto en curso, uno
+  archivado, uno detenido a medias y tareas sueltas. Sirve para entender el ciclo completo sin tener que correrlo,
+  y para copiar de ahí la forma de un documento cuando dudes.
 - **Nada aquí depende de una instalación particular de Claude Code.** Los agentes, comandos y skills funcionan con
   Claude Code estándar; no requieren plugins, marketplaces ni skills externas.
 - **Este repo se usa en local, sin git.** No hay historial ni remoto: las copias de seguridad y el versionado, si los

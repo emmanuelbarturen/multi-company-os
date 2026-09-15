@@ -33,9 +33,12 @@ El framework aporta ese contrato. **Cada empresa aporta su vocabulario**: sus á
 
 Eso es todo. El paso 2 es de una sola vez; después, cada empresa nueva entra con `/mos:empresa-nueva`.
 
-**Antes de empezar, dale una vuelta a los ejemplos.** `tienda-de-cafe/` y `estudio-web/` traen trabajo de mentira
-dentro — un proyecto a medias, uno terminado y archivado, y tareas sueltas — para que veas el ciclo completo sin
-tener que correrlo. Cuando ya no te enseñen nada, bórralos: no son tus empresas.
+**`main` viene vacío a propósito**: sin empresas, sin trabajo, sin nada que borrar. Empiezas de cero.
+
+**Si antes quieres ver el framework funcionando, mira la rama `ejemplo-de-uso`.** Ahí hay dos empresas inventadas
+con trabajo de mentira dentro —un proyecto en curso, uno terminado y archivado, uno detenido a medias esperando una
+decisión, y tareas sueltas— para que entiendas el ciclo leyendo, sin tener que correrlo. Es también de donde copiar
+la forma de un documento cuando no sepas cómo se escribe.
 
 Si en el paso 2 configuraste algún MCP, **reinicia la sesión antes del paso 3**: el registro de servidores MCP se
 congela al arrancar, así que no cargan hasta que vuelvas a abrir.
@@ -85,9 +88,9 @@ congela al arrancar, así que no cargan hasta que vuelvas a abrir.
 - **Ninguna integración obligatoria.** Publicar a una herramienta externa es opcional y se declara por empresa. Sin
   configurar nada, todo se queda en Markdown y el ciclo funciona igual.
 - **Ningún catálogo de áreas impuesto.** Hay uno sugerido; cada empresa lo recorta, lo renombra o lo ignora.
-  `tienda-de-cafe` tiene dos áreas y `estudio-web` otras dos, **sin un solo nombre en común**. Es deliberado.
+  En la rama `ejemplo-de-uso` verás dos empresas con dos áreas cada una y **sin un solo nombre en común**.
 - **Ninguna dependencia de plugins, marketplaces ni skills externas.** Funciona con Claude Code estándar.
-- **Ningún dato de negocio real.** Las dos empresas de ejemplo son ficticias.
+- **Ningún dato de negocio real.** `main` no trae empresas; las de la rama `ejemplo-de-uso` son inventadas.
 
 ---
 
@@ -122,10 +125,10 @@ funnel, decisiones, procesos. Nunca los datos personales de sus clientes finales
 ├── .claude/               ← ÚNICA capa de IA: 7 agentes, 7 comandos, 3 skills
 ├── .mcp.example.json      ← plantilla de servidores MCP, sin credenciales
 ├── _global/Decisiones/    ← bitácora de lo que no es de ninguna empresa
-├── _Templates/            ← empresa, área, proyecto
-├── tienda-de-cafe/        ← EJEMPLO: negocio de barrio, 2 áreas
-└── estudio-web/           ← EJEMPLO: estudio por encargo, 2 áreas
+└── _Templates/            ← empresa, área, proyecto
 ```
+
+**Aún no hay ninguna empresa:** `/mos:setup` crea la primera, como una carpeta más en la raíz.
 
 Y dentro de cada empresa: su `context.md`, una carpeta por área declarada, `_GTD/Proyectos/` y `_GTD/Tareas-Sueltas/`,
 `_Referencias/` para los archivos de afuera que consultas, y `Decisiones/` para su bitácora.
@@ -170,6 +173,7 @@ find . -maxdepth 2 -name context.md -not -path './_Templates/*'
 ```
 
 El chequeo 1 lo adaptas a tus términos: pon ahí el nombre de tus empresas, tus dominios y los nombres de tus
-clientes. El objetivo es que salgan **cero resultados** en los dos primeros, y solo los ejemplos en el tercero.
+clientes. El objetivo es que salgan **cero resultados** en los dos primeros; en el tercero, solo las empresas que
+de verdad quieras compartir.
 
 Y borra `.mcp.json` de la copia si lo creaste: ahí viven tus credenciales. El `.mcp.example.json` es el que se comparte.

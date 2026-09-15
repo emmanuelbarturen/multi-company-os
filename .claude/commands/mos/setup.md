@@ -16,10 +16,10 @@ Antes de preguntar nada, mira qué hay:
 find . -maxdepth 2 -name 'context.md' -not -path './_Templates/*' -not -path './.claude/*'
 ```
 
-- **Solo aparecen `tienda-de-cafe` y `estudio-web`** → repo recién clonado. Sigue al paso 1.
-- **Aparecen otras empresas** → el repo ya está en uso. **Dilo y pregunta** con `AskUserQuestion` si quiere
-  (a) agregar empresas al setup existente, (b) solo configurar MCPs, o (c) cancelar. **Nunca reconfigures un repo
-  en uso sin que te lo confirme.**
+- **No aparece ninguna** → repo recién clonado, punto de partida limpio. Sigue al paso 1.
+- **Aparecen empresas** → el repo ya está en uso, o se clonó desde la rama `ejemplo-de-uso`. **Dilo y pregunta**
+  con `AskUserQuestion` si quiere (a) agregar empresas a lo que ya hay, (b) solo configurar MCPs, o (c) cancelar.
+  **Nunca reconfigures un repo en uso sin que te lo confirme.**
 
 Cuenta también qué hay en `.mcp.json`: si ya existe, este comando **añade**, no reemplaza.
 
@@ -64,10 +64,13 @@ Por cada empresa confirmada:
    empresa. La bitácora de la empresa arranca vacía a propósito.
 6. Fecha de hoy en todas las cabeceras `<!-- Creado: … -->`.
 
-## 4. Limpiar los ejemplos
+## 4. Limpiar los ejemplos — solo si los hay
 
-`tienda-de-cafe` y `estudio-web` existen solo para enseñar. Pregunta con `AskUserQuestion` (header "Ejemplos"):
-**Borrarlas** (recomendado, una vez que ya tiene las suyas) / **Conservarlas** (si quiere seguir consultándolas).
+La rama `main` viene **sin empresas**, así que lo normal es que este paso no aplique: dilo en una línea y sigue.
+
+Aplica solo si el repo se clonó desde la rama `ejemplo-de-uso`, que trae dos empresas inventadas. En ese caso
+pregunta con `AskUserQuestion` (header "Ejemplos"): **Borrarlas** (recomendado, una vez que ya tiene las suyas) /
+**Conservarlas** (si quiere seguir consultándolas).
 
 Si acepta, bórralas. **No las borres sin preguntar**, aunque el paso 3 haya salido bien.
 
@@ -102,7 +105,7 @@ Devuelve en pocas líneas: las empresas creadas con sus áreas, si se borraron l
 los dos siguientes pasos: **reiniciar la sesión** (si configuró MCPs) y **`/mos:explorar`** para arrancar el primer
 trabajo.
 
-Menciona también que `observaciones.md`, si sigue en la raíz, es un archivo suelto que puede borrar.
+Si el repo llegó con empresas de ejemplo y decidió conservarlas, recuérdale que están ahí y que no son suyas.
 
 ## Invariante #0 (no negociable)
 

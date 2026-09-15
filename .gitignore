@@ -3,11 +3,10 @@
 .claude/settings.local.json
 .mcp.json
 
-# Empresas reales: descomenta el patrón que uses si publicas este repo
-# y quieres compartir solo el framework, no tu operación.
+# Empresas reales: descomenta esto si compartes el repo y quieres que viaje
+# solo el framework, no tu operacion. Deja fuera cada empresa que SI quieras
+# compartir agregando su propia linea con "!".
 # /*/
 # !/_global/
 # !/_Templates/
-# !/tienda-de-cafe/
-# !/estudio-web/
 .obsidian/
