@@ -1,0 +1,14 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo 'REGLA #1 de este repo multi-empresa: en tu PRIMERA respuesta de esta sesion, antes de ejecutar nada, resuelve con AskUserQuestion (a) en que EMPRESA se trabaja y (b) si esto es un trabajo nuevo que arranca con /mos:explorar o una pregunta suelta. Saltala solo si el primer mensaje ya responde ambas. Lee <empresa>/context.md antes de cualquier otra cosa.'"
+          }
+        ]
+      }
+    ]
+  }
+}

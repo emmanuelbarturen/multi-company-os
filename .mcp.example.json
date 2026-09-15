@@ -1,0 +1,22 @@
+{
+  "_comment": "Plantilla de servidores MCP. Copia este archivo a .mcp.json y deja SOLO los servidores que uses. .mcp.json esta en .gitignore: nunca versiones credenciales. Registra cada servidor que actives en la tabla 'Necesito data de -> MCP' del CLAUDE.md raiz.",
+  "_invariante_0": "Read-only y con lista blanca de campos siempre que sea posible. Nunca traer datos personales de clientes finales al contexto del modelo: solo agregados y derivadas.",
+  "mcpServers": {
+    "_ejemplo_stdio": {
+      "_como_usarlo": "Borra el guion bajo inicial del nombre para activarlo.",
+      "command": "npx",
+      "args": ["-y", "NOMBRE_DEL_PAQUETE"],
+      "env": {
+        "API_KEY": "${MI_API_KEY}"
+      }
+    },
+    "_ejemplo_http": {
+      "_como_usarlo": "Borra el guion bajo inicial del nombre para activarlo.",
+      "type": "http",
+      "url": "https://ejemplo.invalid/mcp",
+      "headers": {
+        "Authorization": "Bearer ${MI_TOKEN}"
+      }
+    }
+  }
+}
