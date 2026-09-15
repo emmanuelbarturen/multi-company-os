@@ -40,7 +40,7 @@ retoma un proyecto existente por su nombre, o es la lectura trivial de un archiv
 Con varias empresas en el mismo repo, **saber en cuál estás es un paso explícito, nunca una suposición**. El orden de
 resolución es este, y el primero que dé resultado gana:
 
-1. **El usuario la nombra** en su mensaje ("en la consultora…", "para empresa1…").
+1. **El usuario la nombra** en su mensaje ("en la cafetería…", "para el estudio…").
 2. **El path lo determina:** el archivo o carpeta en juego está bajo `<empresa>/`.
 3. **La sesión ya la fijó:** una empresa resuelta antes en esta misma conversación sigue vigente hasta que el usuario la
    cambie.
@@ -138,8 +138,8 @@ Aplica a todo: documentos, diagramas, prompts, salidas de MCPs y cualquier cosa 
 │   ├── empresa/           ← lo que copia /mos:empresa-nueva
 │   ├── area-context.md
 │   └── proyecto/
-├── empresa1/              ← EJEMPLO didáctico — bórralo
-└── empresa2/              ← EJEMPLO didáctico — bórralo
+├── tienda-de-cafe/        ← EJEMPLO didáctico — bórralo
+└── estudio-web/           ← EJEMPLO didáctico — bórralo
 ```
 
 Y dentro de cada empresa:
@@ -153,7 +153,7 @@ Y dentro de cada empresa:
 │   │   └── Archived/
 │   └── Tareas-Sueltas/<slug>/  ← solo propuesta.md
 │       └── Archived/
-├── _Ingesta/              ← material crudo sin procesar + index.md
+├── _Referencias/          ← archivos de afuera que se consultan + index.md
 ├── _Templates/            ← plantillas propias de esta empresa (opcional)
 └── Decisiones/            ← bitácora de ESTA empresa
 ```
@@ -240,9 +240,16 @@ migrar; si tocan doctrina, se editan directamente en este archivo.
 No entra aquí el trabajo rutinario ni el detalle de implementación: solo lo que cambia el rumbo o la definición.
 El quarter se determina por la fecha actual (Q1 ene-mar, Q2 abr-jun, Q3 jul-sep, Q4 oct-dic).
 
-**Material crudo.** Lo que llega de afuera sin procesar va a `<empresa>/_Ingesta/<Categoría>/`, a **un solo nivel** y
-categorizado por tipo de documento, no por extensión. `_Ingesta/index.md` es un registro vivo obligatorio: toda alta o
-procesamiento actualiza su fila. Es insumo, no conclusión — el análisis resultante va a su área y cita la fuente.
+**Material de referencia.** Lo que llega de afuera y sirve para entender algo — un contrato, un reporte, la
+exportación de otra herramienta, la grabación de una reunión — va a `<empresa>/_Referencias/<Categoría>/`, a **un solo
+nivel** y categorizado por tipo de documento, no por extensión.
+
+**Está ahí para consultarse, no para procesarse.** No es la primera etapa de ningún flujo ni una bandeja que haya que
+vaciar: es el estante al que vuelves cuando necesitas contexto que no está en el repo. Un archivo puede quedarse ahí
+años sin que nadie lo "procese", y eso no es deuda.
+
+`_Referencias/index.md` lleva la cuenta de qué hay y para qué sirve cada cosa — sin él, una carpeta de archivos sueltos
+no le dice nada a nadie. Lo que concluyas leyendo algo de ahí va a su área y **cita de dónde salió**.
 
 **Publicación hacia afuera.** El repo es la fuente de verdad. Publicar a una herramienta externa (Notion, un wiki, un
 gestor de tareas) es **opcional**: se declara en el campo `publicacion:` de `<empresa>/context.md`. Sin backend
@@ -338,6 +345,12 @@ archivos: lo impone lo que el agente tiene escrito y esta tabla.
 > El frontmatter oficial de un agente admite, entre otros: `name`, `description`, `tools`, `disallowedTools`,
 > `model`, `skills`, `memory`, `maxTurns`, `mcpServers`, `hooks`. **No hay ningún campo nativo de ámbito**
 > (`scope`, `paths`, `when` no existen) — por eso el ámbito es doctrina escrita, no configuración.
+>
+> **Nunca escribas `tools: All tools`.** Parece que concede todas las herramientas y hace lo contrario: `tools` es
+> una **lista**, así que eso se lee como dos herramientas llamadas `All` y `tools`, ninguna de las cuales existe.
+> El agente queda con **cero herramientas** y se niega a arrancar. Para darle todas, **omite el campo `tools`
+> por completo**: sin él, el agente hereda todas las del hilo principal. Declara `tools` solo cuando quieras
+> **restringirlo**, y entonces lista los nombres exactos.
 
 ### Situación → Skill
 
@@ -365,8 +378,10 @@ de datos al contexto del modelo — solo agregados y derivadas.
 
 ## Notas
 
-- **Este repo es una plantilla.** `empresa1/` y `empresa2/` son ejemplos didácticos con áreas **distintas entre sí**,
-  a propósito, para mostrar que las áreas son libres. Bórralos y crea los tuyos con `/mos:empresa-nueva`.
+- **Este repo es una plantilla.** `tienda-de-cafe/` y `estudio-web/` son ejemplos didácticos: dos áreas cada una,
+  **sin un solo nombre en común**, para mostrar que las áreas son libres. Traen además trabajo de ejemplo —un
+  proyecto en curso, uno archivado y tareas sueltas— para que se vea el ciclo completo sin tener que correrlo.
+  Bórralos cuando ya no te enseñen nada y crea los tuyos con `/mos:setup`.
 - **Nada aquí depende de una instalación particular de Claude Code.** Los agentes, comandos y skills funcionan con
   Claude Code estándar; no requieren plugins, marketplaces ni skills externas.
 - **Este repo se usa en local, sin git.** No hay historial ni remoto: las copias de seguridad y el versionado, si los

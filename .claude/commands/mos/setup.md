@@ -16,7 +16,7 @@ Antes de preguntar nada, mira qué hay:
 find . -maxdepth 2 -name 'context.md' -not -path './_Templates/*' -not -path './.claude/*'
 ```
 
-- **Solo aparecen `empresa1` y `empresa2`** → repo recién clonado. Sigue al paso 1.
+- **Solo aparecen `tienda-de-cafe` y `estudio-web`** → repo recién clonado. Sigue al paso 1.
 - **Aparecen otras empresas** → el repo ya está en uso. **Dilo y pregunta** con `AskUserQuestion` si quiere
   (a) agregar empresas al setup existente, (b) solo configurar MCPs, o (c) cancelar. **Nunca reconfigures un repo
   en uso sin que te lo confirme.**
@@ -66,7 +66,7 @@ Por cada empresa confirmada:
 
 ## 4. Limpiar los ejemplos
 
-`empresa1` y `empresa2` existen solo para enseñar. Pregunta con `AskUserQuestion` (header "Ejemplos"):
+`tienda-de-cafe` y `estudio-web` existen solo para enseñar. Pregunta con `AskUserQuestion` (header "Ejemplos"):
 **Borrarlas** (recomendado, una vez que ya tiene las suyas) / **Conservarlas** (si quiere seguir consultándolas).
 
 Si acepta, bórralas. **No las borres sin preguntar**, aunque el paso 3 haya salido bien.

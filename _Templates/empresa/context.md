@@ -50,7 +50,7 @@ falten. Cada área declarada debe existir como carpeta con su propio `context.md
 |---|---|
 | `_GTD/Proyectos/<slug>/` | el cómo de cada proyecto: `propuesta.md`, `exploracion.md`, `solucion.md`, `tareas.md` |
 | `_GTD/Tareas-Sueltas/<slug>/` | trabajo que cabe en una página: solo `propuesta.md` |
-| `_Ingesta/` | material crudo sin procesar + `index.md` como registro vivo |
+| `_Referencias/` | archivos de afuera que se consultan para entender un contexto + `index.md` |
 | `Decisiones/` | bitácora de decisiones de esta empresa, por quarter |
 
 ## Reglas propias de esta empresa
