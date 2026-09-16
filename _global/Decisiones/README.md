@@ -3,7 +3,7 @@
 # Decisiones globales
 
 Bitácora de las decisiones que **no pertenecen a ninguna empresa**. Un evento por línea, con fecha, en el archivo
-del quarter actual: `Q<N>-<AAAA>.log` (Q1 ene-mar, Q2 abr-jun, Q3 jul-sep, Q4 oct-dic).
+del quarter actual: `Q<N>-<AAAA>.md` (Q1 ene-mar, Q2 abr-jun, Q3 jul-sep, Q4 oct-dic).
 
 ## Qué es "global" y qué no
 
