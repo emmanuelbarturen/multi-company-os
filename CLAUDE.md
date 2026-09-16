@@ -220,7 +220,7 @@ empieza a implementar, escribe arriba la **fecha de ejecución**; si va en varia
 
 **Bitácora de decisiones — tres niveles.** Toda **decisión importante, cambio de definición o hito** se registra de
 forma legible para humanos, con fecha, una línea o bloque por evento, en el archivo del quarter
-(`Q<N>-<AAAA>.log`). Dónde, depende de a quién pertenece:
+(`Q<N>-<AAAA>.md`). Dónde, depende de a quién pertenece:
 
 | A quién pertenece | Dónde va | Ejemplos |
 |---|---|---|

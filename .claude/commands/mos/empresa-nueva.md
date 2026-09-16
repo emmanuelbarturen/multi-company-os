@@ -59,7 +59,7 @@ Siempre se pueden agregar después — preguntando de nuevo.
 ## 5. Registrar el hito
 
 El alta de una empresa **no pertenece a esa empresa: pertenece al portafolio.** Va a la bitácora global, en
-`_global/Decisiones/Q<N>-<AAAA>.log` (Q1 ene-mar, Q2 abr-jun, Q3 jul-sep, Q4 oct-dic):
+`_global/Decisiones/Q<N>-<AAAA>.md` (Q1 ene-mar, Q2 abr-jun, Q3 jul-sep, Q4 oct-dic):
 
 ```
 AAAA-MM-DD — Alta de la empresa <nombre> (<slug>). Áreas: <lista>.

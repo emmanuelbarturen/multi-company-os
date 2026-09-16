@@ -47,7 +47,7 @@ Sin backend o sin enlace, sáltate este paso y dilo en el resumen final.
 
 ## 5. Bitácora
 
-Añade una línea al archivo del quarter actual en `<empresa>/Decisiones/Q<N>-<AAAA>.log`
+Añade una línea al archivo del quarter actual en `<empresa>/Decisiones/Q<N>-<AAAA>.md`
 (Q1 ene-mar, Q2 abr-jun, Q3 jul-sep, Q4 oct-dic). Si el trabajo afectó a **varias** empresas, escribe la misma línea
 marcada `[cross]` en la bitácora de cada una. Solo si la decisión no pertenece a ninguna empresa en particular —
 un cambio de foco del portafolio, por ejemplo — va a `_global/Decisiones/`:
